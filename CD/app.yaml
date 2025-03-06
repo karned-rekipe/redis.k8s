@@ -7,7 +7,6 @@ spec:
   project: karned
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 20.10.0
     chart: redis
     helm:
       valueFiles:
