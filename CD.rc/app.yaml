@@ -8,6 +8,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: redis
+    targetRevision: 7.4.2
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/karned-rekipe/redis.k8s/refs/heads/main/CD/values.yaml
