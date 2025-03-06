@@ -1,9 +1,44 @@
-architecture: standalone
-
-replica:
-  replicaCount: 1
+auth:
+  enabled: true
+  existingSecret: redis-server-license-secret
+  password: ""
 
 persistence:
   enabled: true
   size: 5Gi
   storageClass: "csi-cinder-high-speed"
+  accessMode: ReadWriteOnce
+  volumeMode: Filesystem
+
+service:
+  type: ClusterIP
+  port: 6379
+  clusterIP: None
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "1"
+
+replica:
+  replicaCount: 1
+
+initContainers:
+  enabled: false
+
+image:
+  registry: docker.io
+  repository: bitnami/redis
+  tag: 6.0.9
+
+metrics:
+  enabled: false
+
+logLevel: "notice"

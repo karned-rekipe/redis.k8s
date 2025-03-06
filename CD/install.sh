@@ -1,3 +1,1 @@
-#!/bin/zsh
-
-helm install redis-server bitnami/redis -f values.yaml -n karned
+kubectl apply -f app.yaml -n argocd

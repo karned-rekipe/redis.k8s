@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: argocd
+spec:
+  project: karned
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 16.13.4
+    chart: redis
+    helm:
+      valueFiles:
+        - https://raw.githubusercontent.com/karned-rekipe/redis.k8s/refs/heads/main/CD/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: karned
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
