@@ -33,12 +33,7 @@ replica:
 initContainers:
   enabled: false
 
-image:
-  registry: docker.io
-  repository: bitnami/redis
-  tag: 7.4.2
-
 metrics:
-  enabled: false
+  enabled: true
 
 logLevel: "notice"
